@@ -6,7 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import br.com.lucas.filmebao.service.ConsumoApi;
 import br.com.lucas.filmebao.service.ConverteDados;
-import model.DadosSerie;
+import br.com.lucas.filmebao.model.DadosEpisodio;
+import br.com.lucas.filmebao.model.DadosSerie;
 
 @SpringBootApplication
 public class FilmebaoApplication implements CommandLineRunner {
@@ -21,8 +22,11 @@ public void run(String... args) throws Exception {
 	var consumoApi = new ConsumoApi();
 	var json = consumoApi.obterDados("http://www.omdbapi.com/?t=supernatural&apikey=85adf8ba");
 	var conversor = new ConverteDados();
-	DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
-	System.out.println(dados);
+	DadosSerie dadosSerie = conversor.obterDados(json, DadosSerie.class);
+	System.out.println(dadosSerie);
+	json = consumoApi.obterDados("http://www.omdbapi.com/?t=supernatural&season=1&episode=2&apikey=85adf8ba");	
+	DadosEpisodio dadosEpisodio = conversor.obterDados(json, DadosEpisodio.class);
+	System.out.println(dadosEpisodio);
 }
 
 }

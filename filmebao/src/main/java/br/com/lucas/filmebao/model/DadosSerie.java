@@ -1,4 +1,4 @@
-package model;
+package br.com.lucas.filmebao.model;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
